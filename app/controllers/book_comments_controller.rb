@@ -9,10 +9,9 @@ class BookCommentsController < ApplicationController
   end
   
   def destroy
-  #   book = Book.find(params[:book_id])
-  #   favorite = current_user.favorites.find_by(book_id: book.id)
-  #   favorite.destroy
-  #   redirect_to request.referer
+     comment = BookComment.find(params[:book_id])
+     comment.destroy
+     redirect_to request.referer
   end
 
   
