@@ -1,4 +1,5 @@
-<%= form_with model: [@book, @book_comment] do |f| %>
+<%= form_with model: [@book, @book_comment], remote: true do |f| %>
   <%= f.text_area :comment, class: 'form-control book_body', rows: '5' %>
+  <p></p>
   <%= f.submit "送信" %>
 <% end %>
