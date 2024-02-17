@@ -57,6 +57,47 @@ class User < ApplicationRecord
     self.books.where(created_at: Date.yesterday.beginning_of_day..Date.yesterday.end_of_day).count
   end
 
+  def get_2days_ago_book_count
+    four_days_ago_start = Date.today.beginning_of_day - 2.days
+    four_days_ago_end = Date.today.end_of_day - 2.days
+
+    self.books.where(created_at: four_days_ago_start..four_days_ago_end).count
+  end
+
+  def get_3days_ago_book_count
+    four_days_ago_start = Date.today.beginning_of_day - 3.days
+    four_days_ago_end = Date.today.end_of_day - 3.days
+
+    self.books.where(created_at: four_days_ago_start..four_days_ago_end).count
+  end
+
+  def get_4days_ago_book_count
+    four_days_ago_start = Date.today.beginning_of_day - 4.days
+    four_days_ago_end = Date.today.end_of_day - 4.days
+
+    self.books.where(created_at: four_days_ago_start..four_days_ago_end).count
+  end
+
+  def get_5days_ago_book_count
+    four_days_ago_start = Date.today.beginning_of_day - 5.days
+    four_days_ago_end = Date.today.end_of_day - 5.days
+
+    self.books.where(created_at: four_days_ago_start..four_days_ago_end).count
+  end
+
+  def get_6days_ago_book_count
+    four_days_ago_start = Date.today.beginning_of_day - 6.days
+    four_days_ago_end = Date.today.end_of_day - 6.days
+
+    self.books.where(created_at: four_days_ago_start..four_days_ago_end).count
+  end
+
+
+
+
+
+
+
   def get_book_week_post_count
     past_week_start = Date.today.beginning_of_day - 6.days
     past_week_end = Date.today.end_of_day
