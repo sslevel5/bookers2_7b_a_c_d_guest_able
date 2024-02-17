@@ -20,16 +20,33 @@
         </thead>
         <tbody>
           <tr>
-            <td><%= @user.get_today_post_count %></td>
-            <td><%= @user.get_yesterday_post_count %></td>
-            <% if @user.get_yesterday_post_count == 0 %>
+            <td><%= @user.get_today_book_count %></td>
+            <td><%= @user.get_yesterday_book_count %></td>
+            <% if @user.get_yesterday_book_count == 0 %>
               <td>昨日の投稿なし</td>
             <% else %>
               <td>
-                <%= @user.get_today_post_count / @user.get_yesterday_post_count %>
+                <%= (@user.get_today_post_count / @user.get_yesterday_post_count)*100 %>%
               </td>
             <% end %>
-            </td>
+          </tr>
+        <thead>
+          <tr>
+            <th>今週の投稿数</th>
+            <th>先週の投稿数</th>
+            <th>前週比</th>
+          </tr>
+        </thead>
+          <tr>
+            <td><%= @user.get_book_week_post_count %></td>
+            <td><%= @user.get_book_last_week_post_count %></td>
+            <% if @user.get_book_last_week_post_count == 0 %>
+              <td>先週の投稿なし</td>
+            <% else %>
+              <td>
+                <%= (@user.get_book_week_post_count / @user.get_book_last_week_post_count)*100 %>%
+              </td>
+            <% end %>
           </tr>
         </tbody>
       </table>

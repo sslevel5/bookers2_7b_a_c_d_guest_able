@@ -49,12 +49,26 @@ class User < ApplicationRecord
     end
   end
 
-  def get_today_post_count
+  def get_today_book_count
     self.books.where(created_at: Date.today.beginning_of_day..Date.today.end_of_day).count
   end
 
-  def get_yesterday_post_count
+  def get_yesterday_book_count
     self.books.where(created_at: Date.yesterday.beginning_of_day..Date.yesterday.end_of_day).count
+  end
+
+  def get_book_week_post_count
+    past_week_start = Date.today.beginning_of_day - 6.days
+    past_week_end = Date.today.end_of_day
+
+    self.books.where(created_at: past_week_start..past_week_end).count
+  end
+
+  def get_book_last_week_post_count
+    past_week_start = Date.today.beginning_of_day - 14.days
+    past_week_end = Date.today.end_of_day - 7.days
+
+    self.books.where(created_at: past_week_start..past_week_end).count
   end
 
 end
