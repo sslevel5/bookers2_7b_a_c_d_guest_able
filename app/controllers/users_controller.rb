@@ -8,10 +8,6 @@ class UsersController < ApplicationController
     @book = Book.new
 
   end
-  
-  def get_today_post_count
-    self.books.where(created_at: Date.today.beginning_of_day..Date.today.end_of_day).count
-  end
 
   def index
     @users = User.all

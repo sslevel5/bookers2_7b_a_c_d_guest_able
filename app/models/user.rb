@@ -49,7 +49,12 @@ class User < ApplicationRecord
     end
   end
 
+  def get_today_post_count
+    self.books.where(created_at: Date.today.beginning_of_day..Date.today.end_of_day).count
+  end
 
-
+  def get_yesterday_post_count
+    self.books.where(created_at: Date.yesterday.beginning_of_day..Date.yesterday.end_of_day).count
+  end
 
 end

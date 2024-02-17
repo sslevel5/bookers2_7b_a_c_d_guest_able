@@ -9,6 +9,30 @@
     <div class='col-md-8 offset-md-1'>
       <h2>Books</h2>
       <%= render 'books/index',books: @books %>
+      <h2>投稿数</h2>
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>今日の投稿数</th>
+            <th>昨日の投稿数</th>
+            <th>前日比</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><%= @user.get_today_post_count %></td>
+            <td><%= @user.get_yesterday_post_count %></td>
+            <% if @user.get_yesterday_post_count == 0 %>
+              <td>昨日の投稿なし</td>
+            <% else %>
+              <td>
+                <%= @user.get_today_post_count / @user.get_yesterday_post_count %>
+              </td>
+            <% end %>
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </div>
 </div>
