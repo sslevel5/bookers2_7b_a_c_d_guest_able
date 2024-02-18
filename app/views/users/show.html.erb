@@ -26,7 +26,7 @@
               <td>昨日の投稿なし</td>
             <% else %>
               <td>
-                <%= (@user.get_today_post_count / @user.get_yesterday_post_count)*100 %>%
+                <%= (@user.get_today_book_count / @user.get_yesterday_book_count)*100 %>%
               </td>
             <% end %>
           </tr>
