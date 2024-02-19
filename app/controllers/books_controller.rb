@@ -10,8 +10,9 @@ class BooksController < ApplicationController
   end
 
   def index
-    @books = Book.all
+    @books = Book.includes(:favorites).all
     @book = Book.new
+
   end
 
   def create
