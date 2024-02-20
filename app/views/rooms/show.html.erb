@@ -1,28 +1,52 @@
 <div class='container'>
   <div class='row'>
     <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
-<% @entries.each do |e| %>
-  <% if @myUserId != e.user.id %>
-      <h2><%= e.user.name %>さんとのトークルーム</h2>
+        <% @entries.each do |e| %>
+          <% if @myUserId != e.user.id %>
+             <h2><%= e.user.name %>さんとのトークルーム</h2>
+          <% end %>
+        <% end %>
     </div>
-  <% end %>
-<% end %>
-<%= link_to "ユーザー一覧に戻る", users_path %>
+        <div class="d-grid gap-2 d-md-block">
+        <%= link_to "Back Users", users_path,class: "btn btn-outline-secondary" %>
+        </div>
+        <div class='container'>
+          <div class='row'>
+            <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
 
-   <% if @messages.present? %>
-     <% @messages.each do |m| %>
-       <% @myUserId == m.user.id  %>
-       <p><%= m.user.name %></p>
-         <p><%= m.message %></p>
-     <% end %>
-   <% end %>
+                <%= form_with model: @message, local: true do |form| %>
+                  <%= form.text_field :message, placeholder: "メッセージを入力してください", size: 50, class: "form-text-field" %>
+                  <%= form.hidden_field :room_id, value: @room.id %>
+                  <%= form.submit "投稿", class: "form-submit" %>
+                <% end %>
 
-<%= form_with model: @message, local: true do |form| %>
-  <%= form.text_field :message, placeholder: "メッセージを入力してください", size: 50, class: "form-text-field" %>
-  <%= form.hidden_field :room_id, value: @room.id %>
-  <%= form.submit "投稿", class: "form-submit" %>
-<% end %>
+            </div>
+          </div>
+        </div>
 
+        <div class='container'>
+          <div class='row'>
+            <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>name</th>
+                    <th>post</th>
+                </tr>
+            </thead>
+
+           <% if @messages.present? %>
+             <% @messages.each do |m| %>
+               <% @myUserId == m.user.id  %>
+            <tbody>
+                <tr>
+                    <td><%= m.user.name %></td>
+                    <td><%= m.message %></td>
+                </tr>
+            </tbody>
+             <% end %>
+           <% end %>
+        </table>
     </div>
   </div>
 </div>
