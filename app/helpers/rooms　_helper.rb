@@ -1,2 +1,0 @@
-module Rooms　Helper
-end

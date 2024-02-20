@@ -19,6 +19,8 @@
   </tr>
 </table>
 
+<%= render "users/dm", user: @user, room: @room, entry: @entry, roomId: @roomId, isRoom: @isRoom, current_user: current_user %>
+
 <div class='container'>
   <div class='row'>
   <%= link_to edit_user_path(user), class: "btn btn-outline-secondary btn-block" do %>
