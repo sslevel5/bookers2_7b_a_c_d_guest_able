@@ -112,4 +112,7 @@ class User < ApplicationRecord
     self.books.where(created_at: past_week_start..past_week_end).count
   end
 
+  has_many :messages, dependent: :destroy
+  has_many :entries, dependent: :destroy
+
 end
