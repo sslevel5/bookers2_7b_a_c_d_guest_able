@@ -42,6 +42,7 @@
                 <tr>
                     <td><%= m.user.name %></td>
                     <td><%= m.message %></td>
+                    <td><small><%= m.created_at.strftime("%Y/%m/%d %H:%M") %></small></td>
                 </tr>
             </tbody>
              <% end %>
