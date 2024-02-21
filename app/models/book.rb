@@ -30,5 +30,6 @@ class Book < ApplicationRecord
     self.favorites.where(created_at: favorite_week_start..favorite_week_end).count
   end
 
+  has_many :read_counts, dependent: :destroy
 
 end
