@@ -1,4 +1,13 @@
+  <h2>Comment</h2>
+  <thead>
+    <tr>
+      <th>name</th>
+      <th>comment</th>
+      <th></th>
+    </tr>
+  </thead>
   <% @book.book_comments.each do |book_comment| %>
+  <tbody>
     <tr>
       <td>
         <%= link_to(@book.user) do %>
@@ -13,4 +22,5 @@
         <% end %>
       </td>
     </tr>
+  </tbody>
   <% end %>

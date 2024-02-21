@@ -9,6 +9,19 @@
     <div class='col-md-8 offset-md-1'>
   		<h2>Book detail</h2>
   		<table class='table'>
+  		  <thead>
+  		    <tr>
+  		      <th></th>
+  		      <th>Title</th>
+  		      <th>Opinion</th>
+  		      <th></th>
+  		      <th></th>
+  		      <th></th>
+  		      <th></th>
+  		      <th></th>
+  		    </tr>
+  		  </thead>
+  		  <tbody>
   		  <tr>
           <td><%= link_to(@book.user) do %>
             <%= image_tag @book.user.get_profile_image, size:"100x100" %><br>
@@ -23,11 +36,15 @@
           <td id="comment_count">
             <%= render 'book_comments/count', book: @book %>
           </td>
+          <td>
+            views : <%= @book.read_counts.count %>
+          </td>
           <% if @book.user == current_user %>
             <td><%= link_to 'Edit', edit_book_path(@book), class: "btn btn-sm btn-success" %></td>
             <td><%= link_to 'Destroy', @book, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger"%></td>
           <% end %>
         </tr>
+        </tbody>
       <table class="table" id="comment_index">
         <%= render 'book_comments/index', book: @book %>
       </table>
