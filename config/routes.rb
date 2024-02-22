@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'groups/new'
+  get 'groups/index'
+  get 'groups/show'
+  get 'groups/edit'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   root :to =>"homes#top"
@@ -18,5 +22,6 @@ Rails.application.routes.draw do
   get "search" => "searches#search"
   resources :messages, only: [:create]
   resources :rooms, only: [:create,:show]
+  resources :groups, only: [:new, :index, :show, :create, :edit, :update]
 
 end
