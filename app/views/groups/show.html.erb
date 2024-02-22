@@ -15,9 +15,11 @@
         <thead>
           <tr>
             <th></th>
-            <th>グループ名</th>
-            <th>紹介文</th>
-            <th colspan="3"></th>
+            <th>Group</th>
+            <th>Introduction</th>
+            <th>Menbers</th>
+            <th></th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
@@ -26,8 +28,13 @@
             <td><%= @group.name %></td>
             <td><%= @group.introduction %></td>
             <td>
+
+            </td>
+            <td>
               <% if @group.owner_id == current_user.id %>
                 <%= link_to "Edit", edit_group_path(@group), class: "btn btn-success" %>
+              <% else %>
+                        <td>Join this group</td>
               <% end %>
             </td>
           </tr>

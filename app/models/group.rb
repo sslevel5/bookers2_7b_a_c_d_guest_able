@@ -18,4 +18,10 @@ class Group < ApplicationRecord
     owner.id == user.id
   end
 
+  has_many :users, through: :group_users, source: :user
+
+  def includesUser?(user)
+    group_users.exists?(user_id: user.id)
+  end
+
 end
