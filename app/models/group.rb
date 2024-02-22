@@ -20,7 +20,7 @@ class Group < ApplicationRecord
 
   has_many :users, through: :group_users, source: :user
 
-  def includesUser?(user)
+  def include_user?(user)
     group_users.exists?(user_id: user.id)
   end
 
