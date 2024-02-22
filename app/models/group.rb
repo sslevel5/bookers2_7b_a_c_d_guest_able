@@ -6,11 +6,13 @@ class Group < ApplicationRecord
   validates :introduction, presence: true
   has_one_attached :group_image
 
+  def get_group_image
     if group_image.attached?
       group_image
     else
       'no_image.jpg'
     end
+  end
 
   def is_owned_by?(user)
     owner.id == user.id
