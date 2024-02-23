@@ -42,7 +42,7 @@ Rails.application.configure do
     address:              'smtp.gmail.com',
     domain:               'gmail.com',
     user_name:            'sslevel5dmw@gmail.com',
-    password:             'dkly ayvf cnjx uowh',
+    password:             'dklyayvfcnjxuowh',
     authentication:       'login',
     enable_starttls_auto: true
   }
