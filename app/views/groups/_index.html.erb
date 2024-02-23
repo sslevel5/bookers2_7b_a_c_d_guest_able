@@ -18,6 +18,7 @@
       <% if group.is_owned_by?(current_user) %>
         <td><%= link_to "Edit", edit_group_path(group), class: "btn btn-success group_#{group.id}" %></td>
       <% end %>
+      <td></td>
     </tr>
     <% end %>
   </tbody>
