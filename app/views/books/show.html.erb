@@ -19,6 +19,7 @@
   		      <th></th>
   		      <th></th>
   		      <th></th>
+  		      <th></th>
   		    </tr>
   		  </thead>
   		  <tbody>
@@ -38,6 +39,9 @@
           </td>
           <td>
             views : <%= @book.read_counts.count %>
+          </td>
+          <td>
+            <%= render "static.rate", book: @book %>
           </td>
           <% if @book.user == current_user %>
             <td><%= link_to 'Edit', edit_book_path(@book), class: "btn btn-sm btn-success" %></td>

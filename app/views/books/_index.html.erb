@@ -7,6 +7,7 @@
       <th>favorites</th>
       <th>comments</th>
       <th>views</th>
+      <th>rating</th>
     </tr>
   </thead>
   <tbody>
@@ -26,6 +27,9 @@
         </td>
         <td>
           <%= book.read_counts.count %>
+        </td>
+        <td>
+          <%= render "books/static.rate", book: book %>
         </td>
       </tr>
     <% end %>
