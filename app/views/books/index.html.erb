@@ -9,13 +9,12 @@
     </div>
     <div class='col-md-8 offset-md-1'>
       <h2>Books</h2>
-      <p>
-        <%= link_to "新しい順", books_path(sort: 'created_at DESC') %>
-      |
-      <%= link_to "評価の高い順", books_path(sort: 'star DESC') %>
-      </p>
-      <% sorted_books = @books.includes(:favorites).sort_by { |book| book.get_book_week_favorite_count }.reverse %>
-      <%= render 'index', books: sorted_books %>
+        <%= form_with model: @book, url: books_path, method: :get do |f| %>
+        <%= f.select :scope, options_for_select([["new", "latest"], ["old", "old"], ["star", "star_count"]]) %>
+        <%= f.submit "Submit" %>
+        <% end %>
+      <!--% sorted_books = @books.includes(:favorites).sort_by { |book| book.get_book_week_favorite_count }.reverse %-->
+      <%= render 'index', books: @books %>
     </div>
   </div>
 </div>
