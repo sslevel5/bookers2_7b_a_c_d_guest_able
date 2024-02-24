@@ -9,6 +9,7 @@
     </div>
     <div class='col-md-8 offset-md-1'>
       <h2>Books</h2>
+      <%= f.select :scope, options_for_select([["最新順", "latest"], ["古い順", "old"], ["人気順", "star_count"]], params[:scope]) %>
       <% sorted_books = @books.includes(:favorites).sort_by { |book| book.get_book_week_favorite_count }.reverse %>
       <%= render 'index', books: sorted_books %>
     </div>
