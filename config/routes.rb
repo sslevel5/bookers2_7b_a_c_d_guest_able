@@ -28,4 +28,6 @@ Rails.application.routes.draw do
       get "send/mail" => "groups#send_mail"
   end
 
+  get 'tagsearches/search', to: 'tagsearches#search'
+
 end
