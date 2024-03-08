@@ -20,11 +20,14 @@
 </table>
 
 <div class='container'>
+
+  <% unless user.guest_user? %>
   <div class='row'>
   <%= link_to edit_user_path(user), class: "btn btn-outline-secondary btn-block" do %>
     <i class="fas fa-user-cog"></i>
   <% end %>
   </div>
+  <% end %>
   <div class='row'><p></p></div>
   <div class='row'>
   <% if current_user != user %>

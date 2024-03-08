@@ -94,10 +94,6 @@ class User < ApplicationRecord
 
 
 
-
-
-
-
   def get_book_week_post_count
     past_week_start = Date.today.beginning_of_day - 6.days
     past_week_end = Date.today.end_of_day
@@ -118,5 +114,18 @@ class User < ApplicationRecord
   has_many :read_counts, dependent: :destroy
 
   has_many :group_users, dependent: :destroy
+
+  GUEST_USER_EMAIL = "guest@example.com"
+
+  def self.guest
+    find_or_create_by!(email: GUEST_USER_EMAIL) do |user|
+      user.password = SecureRandom.urlsafe_base64
+      user.name = "guestuser"
+    end
+  end
+
+  def guest_user?
+    email == GUEST_USER_EMAIL
+  end
 
 end
