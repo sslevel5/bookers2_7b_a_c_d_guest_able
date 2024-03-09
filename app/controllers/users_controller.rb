@@ -51,7 +51,7 @@ class UsersController < ApplicationController
     @books = @user.books
     @book = Book.new
     if params[:created_at] == ""
-      @search_book = "日付を選択してください"
+      @search_book = "Please choose a date"
     else
       create_at = params[:created_at]
       @search_book = @books.where(['created_at LIKE ? ', "#{create_at}%"]).count
@@ -74,7 +74,7 @@ class UsersController < ApplicationController
   def ensure_guest_user
     @user = User.find(params[:id])
     if @user.guest_user?
-      redirect_to user_path(current_user) , notice: "ゲストユーザーはプロフィール編集画面へ遷移できません。"
+      redirect_to user_path(current_user) , notice: "Guest users cannot transition to the profile editing screen."
     end
   end
 
