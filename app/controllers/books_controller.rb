@@ -32,7 +32,7 @@ class BooksController < ApplicationController
 
   end
 
-  def create
+  def create#なんか重い
     @book = Book.new(book_params)
     @book.user_id = current_user.id
     if @book.save
