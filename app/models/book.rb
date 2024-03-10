@@ -4,6 +4,7 @@ class Book < ApplicationRecord
   validates :body,presence:true,length:{maximum:200}
   has_many :favorites, dependent: :destroy
   has_many :book_comments, dependent: :destroy
+  has_many :notifications, as: :notifiable, dependent: :destroy #追記
 
   def favorited_by?(user)
     favorites.exists?(user_id: user.id)
@@ -37,6 +38,12 @@ class Book < ApplicationRecord
   scope :star_count, -> {order(star: :desc)}
 
   validates :tag, presence: true
+
+  after_create do
+    user.followers.each do |follower|
+      notifications.create(user_id: follower.id)
+    end
+  end
 
 
 end
