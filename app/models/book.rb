@@ -46,6 +46,14 @@ class Book < ApplicationRecord
       notifications.create(user_id: follower.id)
     end
   end
+  
+  def notification_message
+    "フォローしている#{user.name}さんが#{title}を投稿しました"
+  end
+
+  def notification_path
+    book_path(self)
+  end
 
 
 end
