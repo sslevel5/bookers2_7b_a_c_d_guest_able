@@ -1,4 +1,5 @@
 class Favorite < ApplicationRecord
+  include Notifiable
   belongs_to :user
   belongs_to :book
   has_one :notification, as: :notifiable, dependent: :destroy #追記
